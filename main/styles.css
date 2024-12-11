@@ -1,0 +1,59 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Wrapper for entire page */
+.wholeBody {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Header Style */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Styling for the links */
+a {
+    text-decoration: none;
+}
+
+/* Task Box Styling */
+.TASKS {
+    background-color: #e0e0e0;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.TASKS:hover {
+    background-color: #c1c1c1;
+}
+
+/* Accent text styling */
+.accent {
+    font-weight: bold;
+    color: #009688;
+    font-size: 18px;
+}
+
+/* Hover effect for .TASKS */
+.TASKS:hover .accent {
+    color: #ffffff;
+}
+
+/* Additional Space Below Each Task */
+.TASKS + .TASKS {
+    margin-top: 20px;
+}
