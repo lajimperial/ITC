@@ -1,0 +1,52 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('abstract-dark-background-with-flowing-colouful-waves.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-attachment: fixed; 
+}
+
+.wholeBody {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.TASKS {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 15px;
+    border-radius: 8px;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.TASKS:hover {
+    background-color: #2e1515; /* Choose one hover effect */
+    color: #fff; /* Optional: change text color for better contrast */
+}
+
+.accent {
+    font-weight: bold;
+    color: #940000;
+    font-size: 18px;
+}
+
+/* Additional Space Below Each Task */
+.TASKS + .TASKS {
+    margin-top: 20px;
+}
