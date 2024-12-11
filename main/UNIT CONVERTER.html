@@ -2,6 +2,7 @@
 <html>
 <head>
    <link rel="stylesheet" href="css/styles.css">
+   <script>
    function converting() {
             const type = document.getElementById('conversion-type').value;
             const value = parseFloat(document.getElementById('input-value').value);
@@ -18,7 +19,7 @@
             };
 
             document.getElementById('result').textContent = conversions[type](value);
-        }
+        }</script>
 </head>
 <body>
     <h1>Unit Converter</h1>
