@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        function calculateTaxable() {
+            const taxableIncome = parseFloat(document.getElementById("taxableIncome").value);
+            let incomeTax = 0;
+
+            if (taxableIncome > 8000000) {
+                incomeTaxable = 2410000 + 0.35 * (taxableIncome - 8000000);
+            } else if (taxableIncome > 2000000) {
+                incomeTaxable = 490000 + 0.32 * (taxableIncome - 2000000);
+            } else if (taxableIncome > 800000) {
+                incomeTaxable = 130000 + 0.30 * (taxableIncome - 800000);
+            } else if (taxableIncome > 400000) {
+                incomeTaxable = 30000 + 0.25 * (taxableIncome - 400000);
+            } else if (taxableIncome > 250000) {
+                incomeTaxable = 0.20 * (taxableIncome - 250000);
+            } else {
+                incomeTax = 0;
+            }
+
+            document.getElementById("result").textContent = `Income Tax: PHP ${incomeTaxable.toFixed(2)}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Income Tax Calculator</h1>
+    <label for="taxableIncome">Enter your taxable income (PHP):</label>
+    <input type="number" id="taxableIncome" step="0.01">
+    <button onclick="calculateTaxable()">Calculate Tax</button>
+    <p id="result">Income Tax: PHP 0.00</p>
+</body>
+</html>

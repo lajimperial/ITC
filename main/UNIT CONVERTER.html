@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="css/styles.css">
+   function converting() {
+            const type = document.getElementById('conversion-type').value;
+            const value = parseFloat(document.getElementById('input-value').value);
+            if (isNaN(value)) {
+                document.getElementById('result').textContent = 'Enter a valid number.';
+                return;
+            }
+
+            const conversions = {
+                'fahrensius': (v) => ((v - 32) * 5 / 9).toFixed(2) + ' °C',
+                'celsenheit': (v) => ((v * 9 / 5) + 32).toFixed(2) + ' °F',
+                'meet': (v) => (v * 3.28084).toFixed(2) + ' feet',
+                'feeters': (v) => (v / 3.28084).toFixed(2) + ' meters'
+            };
+
+            document.getElementById('result').textContent = conversions[type](value);
+        }
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <p>Select a conversion type and enter the value:</p>
+
+    <label for="conversion-type">Conversion:</label>
+    <select id="conversion-type">
+        <option value="fahrensius">Fahrenheit to Celsius</option>
+        <option value="celsienheit">Celsius to Fahrenheit</option>
+        <option value="meet">Meters to Feet</option>
+        <option value="feeters">Feet to Meters</option>
+    </select>
+
+    <br><br>
+
+    <label for="input-value">Value:</label>
+    <input type="number" id="input-value" required>
+
+    <br><br>
+
+    <button onclick="converting()">Convert</button>
+
+    <h2>Result:</h2>
+    <p id="result">--</p>
+</body>
+</html>

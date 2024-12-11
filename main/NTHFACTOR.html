@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Factorial, Sum, and Average Calculator</h1>
+    <label for="numberInput">Enter an integer (n):</label>
+    <input type="number" id="numberInput" min="0">
+    <button onclick="calculateResults()">Calculate</button>
+
+     <div id="results" class="result"></div>
+
+    <script>
+        function calculateResults() {
+            const n = parseInt(document.getElementById("numberInput").value);
+            if (isNaN(n) || n < 0) {
+                document.getElementById("results").textContent = "Please enter a valid non-negative integer.";
+                return;
+            }
+
+            let factorial = 1, sum = 0;
+
+            for (let i = 1; i <= n; i++) {
+                factorial *= i;
+                sum += i;
+            }
+
+            const average = n > 0 ? sum / n : 0;
+
+            document.getElementById("results").innerHTML = `
+                <p>Factorial of ${n}: ${factorial}</p>
+                <p>Sum of the first ${n} numbers: ${sum}</p>
+                <p>Average of the first ${n} numbers: ${average.toFixed(2)}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

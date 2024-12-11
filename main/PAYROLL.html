@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Simple Payroll</h1>
+    <form id="payroll-form">
+        <label for="name">Employee Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="days">Days Worked:</label>
+        <input type="number" id="days" min="0" required>
+
+        <label for="rate">Daily Rate:</label>
+        <input type="number" id="rate" min="0" required>
+
+        <label for="deduction">Deduction Amount:</label>
+        <input type="number" id="deduction" min="0" required>
+
+        <button type="button" onclick="addEmployee()">Add Employee</button>
+    </form>
+
+    <h2>Payroll Table</h2>
+    <table id="payroll-table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <form id="delete-form">
+        <label for="delete-line">Line Number to Delete:</label>
+        <input type="number" id="delete-line" min="1" required>
+        <button type="button" onclick="deleteRow()">Delete</button>
+    </form>
+
+    <script>
+        let payrollList = [];
+
+        function addEmployee() {
+            const name = document.getElementById('name').value;
+            const days = parseInt(document.getElementById('days').value, 10);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const deduction = parseFloat(document.getElementById('deduction').value);
+
+            if (!name || days < 0 || rate < 0 || deduction < 0) {
+                alert('Please fill all fields with valid values.');
+                return;
+            }
+
+            const grossPay = days * rate;
+            const netPay = grossPay - deduction;
+
+            payrollList.push({ name, days, rate, grossPay, deduction, netPay });
+            updateTable();
+            document.getElementById('payroll-form').reset();
+        }
+
+        function updateTable() {
+            const tbody = document.querySelector('#payroll-table tbody');
+            tbody.innerHTML = '';
+
+            payrollList.forEach((employee, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.days}</td>
+                    <td>${employee.rate.toFixed(2)}</td>
+                    <td>${employee.grossPay.toFixed(2)}</td>
+                    <td>${employee.deduction.toFixed(2)}</td>
+                    <td>${employee.netPay.toFixed(2)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function deleteRow() {
+            const lineNumber = parseInt(document.getElementById('delete-line').value, 10);
+
+            if (lineNumber < 1 || lineNumber > payrollList.length) {
+                alert('Invalid line number.');
+                return;
+            }
+
+            payrollList.splice(lineNumber - 1, 1);
+            updateTable();
+            document.getElementById('delete-form').reset();
+        }
+    </script>
+</body>
+</html>
